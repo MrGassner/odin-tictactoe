@@ -1,0 +1,72 @@
+/* page resets */
+html {
+    box-sizing: border-box;
+}
+  
+*, *::after, *::before {
+    box-sizing: inherit
+}
+  
+/* general  */
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-columns: 1fr;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* header */
+header {
+    background-color: #0f0f0f;
+    color: rgb(133, 13, 13);
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+
+/* main */
+main {
+    height: 100%;
+    grid-row: 2 / 3;
+    background-color: rgb(133, 13, 13);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameBoard {
+    display: grid;
+    aspect-ratio: 1;
+    height: 70vmin;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    color: white;
+    margin: 10px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.col {
+    background-color: #0f0f0f;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15vmin;
+}
+
+footer {
+    grid-row: 3;
+    background-color: #0f0f0f;
+    color: rgb(133, 13, 13);
+}
