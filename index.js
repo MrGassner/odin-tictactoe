@@ -1,4 +1,6 @@
 const Gameboard =(() => {
+    document.querySelector('.resetMenu').addEventListener('click', () => resetBoard())
+    
     let gameboard = []
     const resetBoard = () => {
         gameboard.length = 0
