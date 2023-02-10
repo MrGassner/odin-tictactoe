@@ -1,6 +1,9 @@
 const Gameboard =(() => {
     let gameboard = []
-    const resetBoard = () => gameboard.length = 0
+    const resetBoard = () => {
+        gameboard.length = 0
+        PlayGame.board.forEach(col => col.innerHTML = '')
+    }
     const addToBoard = (player, index) => {
         if (!gameboard.find(key => key.index === index)) {
             gameboard.push({player, index});
@@ -16,6 +19,7 @@ const PlayGame = (() => {
     const playerX = 'X'
     const playerO = 'O'
     const board = document.querySelectorAll('.col')
+    const reset = document.querySelector('.reset')
     const winConditions = [
         ['1', '2', '3'], 
         ['4', '5', '6'], 
@@ -28,6 +32,7 @@ const PlayGame = (() => {
     ]
 
     const checkWinner = () => {
+        
         const board = Gameboard.gameboard
         const xBoard = []
         const oBoard = []
@@ -48,12 +53,28 @@ const PlayGame = (() => {
             const xWinner = condition.every(elem => xBoard.includes(elem));
             const oWinner = condition.every(elem => oBoard.includes(elem));
 
-            if (xWinner) console.log('X Winner')
-            if (oWinner) console.log('O Winner')
+            if (xWinner) displayWinner(false)
+            if (oWinner) displayWinner(true)
         })
     };
-    
 
+    const displayWinner = won => {
+        const winnerDisplay = document.querySelector('.winnerDisplay')
+        const winner = document.querySelector('.winner')
+
+        if (won)  { 
+            winner.innerHTML = 'Winner O'
+        } else {
+            winner.innerHTML = 'Winner X'
+        }
+        
+        if (winnerDisplay.style.display == 'none') {
+            winnerDisplay.style.display = 'block' 
+        } else {
+            winnerDisplay.style.display = 'none'
+        }  
+    }
+    
     board.forEach(sqr => {
         sqr.addEventListener('click', event => {
             if (x = !x) {
@@ -66,4 +87,12 @@ const PlayGame = (() => {
             checkWinner()
         })
     })
+
+    reset.addEventListener('click', () => {
+        displayWinner(false)
+        Gameboard.resetBoard()
+        x = ''
+    })
+
+    return { board }
 })();

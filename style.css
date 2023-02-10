@@ -26,7 +26,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 5vmin;
 }
 
 
@@ -69,4 +69,42 @@ footer {
     grid-row: 3;
     background-color: #0f0f0f;
     color: rgb(133, 13, 13);
+}
+
+
+/* winner display */
+.winnerDisplay {
+    position: absolute;
+    background-color: rgba(15, 15, 15, 0.9);
+    color: white;
+    z-index: 1;
+    aspect-ratio: 1;
+    height: 70vmin;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 9vmin;
+    text-align: center;
+}
+
+.winnerDisplay > h1 {
+    margin: 10px;
+}
+
+.winnerDisplay > button {
+    margin: 0;
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: rgb(133, 13, 13);
+    color: white;
+}
+
+.winnerDisplay > button:hover {
+    color: black;
 }
