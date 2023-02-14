@@ -29,6 +29,43 @@ header {
     font-size: 5vmin;
 }
 
+/* home page */
+.home {
+    position: absolute;
+    top: 110px;
+    width: 100%;
+    height: calc(100% - 110px);
+    z-index: 2;
+    background-color: #0f0f0f;
+    color: rgb(133, 13, 13);
+    display: flex;
+    text-align: center;
+    padding: 50px;
+    font-size: 4vmin;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn > button {
+    width: 80%;
+    height: 20vh;
+    background-color: #0f0f0f;
+    border: rgb(133, 13, 13) 1px solid;
+    color: white;
+    font-size: 5vmin;
+}
+
+.btn > button:hover { 
+    color: rgb(133, 13, 13);
+    cursor: pointer;
+}
+
 
 /* main */
 main {
@@ -39,6 +76,8 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+
 
 .gameBoard {
     display: grid;
