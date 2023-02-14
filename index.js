@@ -11,13 +11,13 @@ const Gameboard =(() => {
             gameboard.push({player, index});
             document.querySelector(`[data-index="${index}"]`).innerHTML = player
         }    
+
         PlayGame.checkWinner()    
     }
     return { gameboard, addToBoard, resetBoard}
 })();
 
 const Menu = (() => {
-    let computerAI = false
     const homeBtn = document.querySelector('.homeMenu')
     const humanBtn = document.querySelector('.human')
     const computerBtn = document.querySelector('.computer')
@@ -27,17 +27,19 @@ const Menu = (() => {
 
     humanBtn.addEventListener('click', () => {
         homeDisplay.style.display = 'none'
+        computerBtn.classList.remove('selected')
         Gameboard.resetBoard()
         PlayGame.displayWinner('close')
     })
 
     computerBtn.addEventListener('click', () => {
         homeDisplay.style.display = 'none'
+        computerBtn.classList.add('selected')
         Gameboard.resetBoard()
         PlayGame.displayWinner('close')
     })
 
-    return { homeDisplay, computerAI }
+    return { homeDisplay }
 })();
 
 
@@ -80,6 +82,7 @@ const PlayGame = (() => {
         winConditions.forEach(condition => {
             const xWinner = condition.every(elem => xBoard.includes(elem));
             const oWinner = condition.every(elem => oBoard.includes(elem));
+
             if ((xWinner === true && endGame === false) || (oWinner === true && endGame === false)) {
                 if (xWinner) {
                     displayWinner('x')
@@ -136,8 +139,9 @@ const PlayGame = (() => {
             }
             if (x = !x) {
                 Gameboard.addToBoard(playerX, event.target.dataset.index)
-                if (Menu.computerAI === true) {
-                    if (Gameboard.gameboard.length !== 9) {
+                let computerAI = document.querySelector('.computer').classList.contains('selected')? true : false
+                if (computerAI === true) {
+                    if (Gameboard.gameboard.length !== 9 && !checkWinner()) {
                         computerPlay()
                     }
                     x = ''
